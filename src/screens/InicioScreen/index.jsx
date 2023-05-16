@@ -7,7 +7,7 @@ import Bebas from '../../../src/assets/fonts/BebasNeue-Regular.ttf';
 
 const fondoInicio = require('../../../assets/fondoInicio.jpg');
 
-const InicioScreen = ({jugar}) => {
+const InicioScreen = ({navigation}) => {
   // Carga la fuente utilizando useFonts
   const [fontsLoaded] = useFonts({
     'Bebas': Bebas,
@@ -21,7 +21,7 @@ const InicioScreen = ({jugar}) => {
     <ImageBackground source={fondoInicio} resizeMode="cover" style={styles.fondo}>
     <View style={styles.container}>
       <Text style={styles.titulo}>Piedra, Papel o Tijera</Text>
-      <TouchableOpacity style={styles.boton} onPress={jugar}>
+      <TouchableOpacity style={styles.boton} onPress={()=> navigation.navigate("Juego")}>
         <Text style={styles.botonTexto}>Jugar</Text>
       </TouchableOpacity>
     </View>

@@ -3,14 +3,15 @@ import { Text, TouchableOpacity, View, Image, ImageBackground } from 'react-nati
 import styles from "./styles"
 
 const fondoJuego = require('../../../assets/fondoJuego.jpg');
-const JuegoScreen = ({ mostrarResultado }) => {
+const JuegoScreen = ({ mostrarResultado, navigation }) => {
   const [jugadaUsuario, setJugadaUsuario] = useState('');
 
   const seleccionarJugada = (jugada) => {
     setJugadaUsuario(jugada);
     const jugadaMaquina = generarJugadaMaquina();
     const resultado = calcularResultado(jugada, jugadaMaquina);
-    mostrarResultado(resultado);
+    navigation.navigate("Resultado", { resultado: resultado, mostrarResultado: mostrarResultado  });
+    
   };
 
   const generarJugadaMaquina = () => {
@@ -54,7 +55,7 @@ const JuegoScreen = ({ mostrarResultado }) => {
       <View style={styles.opciones}>
         <TouchableOpacity
           style={styles.boton}
-          onPress={() => seleccionarJugada('piedra')}>
+          onPress= {()=> seleccionarJugada('piedra')}>
           <Image source={require("../../../assets/rock.png")} style={styles.imagen} />
         </TouchableOpacity>
         <TouchableOpacity
