@@ -1,27 +1,48 @@
-import { StyleSheet, View, Text } from 'react-native'
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import InicioScreen from '../screens/InicioScreen'
-import JuegoScreen from '../screens/JuegoScreen'
-import ResultadoScreen from '../screens/ResultadoScreen'
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import InicioScreen from '../screens/InicioScreen';
+import JuegoScreen from '../screens/JuegoScreen';
+import EstadisticasScreen from '../screens/EstadisticasScreen';
+import { View } from 'react-native';
+import Ionicons from "@expo/vector-icons/Ionicons"
+
+const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-
-    const Stack = createNativeStackNavigator();
-
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name='Inicio' component={InicioScreen}/>
-            <Stack.Screen name='Juego' component={JuegoScreen}/>
-            <Stack.Screen name='Resultado' component={ResultadoScreen}/>
-        </Stack.Navigator>
-
+      <Tab.Navigator>
+        <Tab.Screen name="Inicio"
+         component={InicioScreen}
+         options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="md-home" size={30} color="black" />
+            </View>
+          )
+         }} />
+        <Tab.Screen name="Juego" 
+        component={JuegoScreen}
+        options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="game-controller" size={30} color="black" />
+            </View>
+          )
+         }} />
+        <Tab.Screen name="Estadísticas"
+         component={EstadisticasScreen}
+         options={{
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="analytics-outline" size={30} color="black" />
+            </View>
+          )
+         }} />
+      </Tab.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default AppNavigator;
-
-const styles = StyleSheet.create ({})

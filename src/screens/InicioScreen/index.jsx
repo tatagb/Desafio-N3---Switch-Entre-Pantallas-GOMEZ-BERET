@@ -1,62 +1,29 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, ImageBackground, StyleSheet} from 'react-native';
-import * as Font from 'expo-font';
-import { useFonts } from 'expo-font';
-import Bebas from '../../../src/assets/fonts/BebasNeue-Regular.ttf';
+import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 
+const fondoJuego = require('../../../assets/fondoInicio.jpg')
 
-const fondoInicio = require('../../../assets/fondoInicio.jpg');
-
-const InicioScreen = ({navigation}) => {
-  // Carga la fuente utilizando useFonts
-  const [fontsLoaded] = useFonts({
-    'Bebas': Bebas,
-  });
-
-  // Verifica si la fuente se ha cargado correctamente
-  if (!fontsLoaded) {
-    return null;
-  }
+const InicioScreen = () => {
   return (
-    <ImageBackground source={fondoInicio} resizeMode="cover" style={styles.fondo}>
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Piedra, Papel o Tijera</Text>
-      <TouchableOpacity style={styles.boton} onPress={()=> navigation.navigate("Juego")}>
-        <Text style={styles.botonTexto}>Jugar</Text>
-      </TouchableOpacity>
+    <ImageBackground source={fondoJuego} resizeMode="cover" style={styles.fondo}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={styles.texto}>INICIO</Text>
     </View>
     </ImageBackground>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fondo: {
-      flex: 1,
-      justifyContent: 'center',
-      width: "100%"
-  },
-  titulo: {
-    fontSize: 40,
-    fontWeight: "bold",
-    marginBottom: 50,
-    color: "white",
-    fontFamily: "Bebas",
-  },
-  boton: {
-    backgroundColor: '#333',
-    padding: 10,
-    borderRadius: 5,
-  },
-  botonTexto: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
-
 export default InicioScreen;
+
+const styles = StyleSheet.create({
+fondo: {
+  flex: 1,
+  justifyContent: 'center',
+  width: "100%"
+},
+texto: {
+  justifyContent: "center",
+  color:"red",
+  fontSize: 50
+}
+})

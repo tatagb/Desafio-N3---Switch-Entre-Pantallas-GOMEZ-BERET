@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 
-const fondoJuego = require('../../../assets/juego.jpg')
+const fondoEstadisticas = require('../../../assets/estadisticas.jpg')
 
-const JuegoScreen = () => {
+const EstadisticasScreen = () => {
   return (
-    <ImageBackground source={fondoJuego} resizeMode="cover" style={styles.fondo}>
+    <ImageBackground source={fondoEstadisticas} resizeMode="cover" style={styles.fondo}>
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={styles.texto}>JUEGO</Text>
+      <Text style={styles.texto}>ESTADÍSTICAS DEL JUEGO</Text>
     </View>
     </ImageBackground>
   );
 };
 
-export default JuegoScreen;
+export default EstadisticasScreen;
 
 const styles = StyleSheet.create({
   fondo: {
